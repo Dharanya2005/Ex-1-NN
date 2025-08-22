@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME:DHARANYA N</H3>
+<H3>ENTER YOUR REGISTER NO:212223230044</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>DATE:22.08.2025</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,11 +37,56 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
-
+```
+#import libraries
+from google.colab import files
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+```
+```
+df=pd.read_csv("Churn_Modelling.csv",index_col="RowNumber")        
+df.head()
+df.isnull().sum()
+```
+```
+df=df.drop(['Surname', 'Geography','Gender'], axis=1)               
+scaler=StandardScaler()                                             
+df=pd.DataFrame(scaler.fit_transform(df))
+df.head()
+```
+```
+X,Y=df.iloc[:,:-1].values ,df.iloc[:,-1].values                     
+print('Input:\n',X,'\nOutput:\n',Y)
+```
+```
+Xtrain,Xtest,Ytrain,Ytest = train_test_split(X, Y, test_size=0.2)   
+print("Xtrain:\n" ,Xtrain, "\nXtest:\n", Xtest)
+print("\nYtrain:\n" ,Ytrain, "\nYtest:\n", Ytest)
+```
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+
+<img width="1402" height="240" alt="image" src="https://github.com/user-attachments/assets/51a8d4f6-54f1-4a2b-a67b-b8fbac22f4af" />
+
+
+<img width="263" height="490" alt="image" src="https://github.com/user-attachments/assets/5d3b047b-55d8-4589-8df5-2496b4102f16" />
+
+
+
+<img width="908" height="203" alt="image" src="https://github.com/user-attachments/assets/f912c41e-08e4-437c-aca2-b845714f086a" />
+
+
+<img width="697" height="327" alt="image" src="https://github.com/user-attachments/assets/93bcd27a-392c-4aee-ae1d-fdb6105d2e63" />
+
+
+<img width="686" height="518" alt="image" src="https://github.com/user-attachments/assets/7c4cdfa4-af7b-427e-9d30-ffc4debd3fbb" />
+
+
+<img width="585" height="128" alt="image" src="https://github.com/user-attachments/assets/128cab6a-fcf7-45b4-9abf-c28388712163" />
+
 
 
 ## RESULT:
